@@ -1,61 +1,28 @@
 # Project Pancake 
 
-Project Pancake is a codename for demonstrating the concept of semi-autonomous edge devices being handled by micro-services running on Kubernetes.  
-This is the perfect illustration of the Open Hybrid Cloud. 
+Project Pancake is demonstrating the concept of Open Hybrid Cloud with a far edge scenario.  
 
+The setup is composed of:
+- a control station 
+- an Red Hat OpenShift cluster deployed within a Public Cloud
+  - a control service
+  - a web service (NGINX + MongoDB) to record sessions
+  - Prometheus + Grafana to expose metrics 
+- an Red Hat Edge Gateway (optional)
+  - a control service 
+- an Edge device 
 
-```mermaid 
-    C4Context
-      title Project Pancake
-      Enterprise_Boundary(b0, "") {
+The scenario is as follow: 
+- an user controls remotely a device by gesture captured via a webcam on the control station.
+- the control station sends the gestures to the control service.
+- the control service sends:
+  - a entry into Prometheus
+  - a feedback to the web service
+  - the requests to the device
 
-        Enterprise_Boundary(b3, "Private Cloud"){
-          Person(Pilot, "RHSC Pilot")
-          Person(Supervisor, "RHSC NOC")
-          System(ControlStation, "Control Station")
-        }
+In far Edge scenario, the connectivity could be a challenge. To mitigate communication failure, an Edge gateway could be deployed closer to the Edge device as a reliable connectivity option.  
+Considering this scenario, the Edge gateway could either be:
+- a Red Hat OpenShift remote worker
+- a Red Hat Edge Device with Podman or Microshift
 
-        Enterprise_Boundary(b2, "Public Cloud") {
-          Enterprise_Boundary(c1, "OpenShift"){
-            System(MongoDB, "MongoDB")
-            System(Grafana, "Grafana")
-            System(Prometheus, "Prometheus")
-            System(Website, "Website")
-          }
-        }
-
-        Enterprise_Boundary(b4, "Edge Gateway"){
-          System(EdgeGateway, "Control Service")
-        }
-        
-        Enterprise_Boundary(b5, "Edge"){
-          System(EdgeDevice, "Edge Device")
-        }
-
-        Enterprise_Boundary(b7, "Public"){ 
-          Person(Public, "World Citizen")
-        }
-      }
-
-      Rel(Pilot, ControlStation, "")
-
-      Rel(ControlStation, EdgeGateway, "")
-      
-      Rel(EdgeGateway, Prometheus, "")
-      Rel(Grafana, Prometheus, "")
-      Rel(EdgeGateway, EdgeDevice, "")
-
-      Rel(Public, Website, "")
-      Rel(Supervisor, Grafana, "")
-
-      UpdateLayoutConfig($c4ShapeInRow="4", $c4BoundaryInRow="2")
-```
-
-<!-- 
-      UpdateElementStyle(customerA, $fontColor="red", $bgColor="grey", $borderColor="red")
-      UpdateRelStyle(customerA, SystemAA, $textColor="blue", $lineColor="blue", $offsetX="5")
-      UpdateRelStyle(SystemAA, SystemE, $textColor="blue", $lineColor="blue", $offsetY="-10")
-      UpdateRelStyle(SystemAA, SystemC, $textColor="blue", $lineColor="blue", $offsetY="-40", $offsetX="-50")
-      UpdateRelStyle(SystemC, customerA, $textColor="red", $lineColor="red", $offsetX="-50", $offsetY="20")
-
-      UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="2") -->
+This scenario will be explored. 

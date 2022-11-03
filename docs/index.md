@@ -11,6 +11,7 @@ This is the perfect illustration of the Open Hybrid Cloud.
 
         Enterprise_Boundary(b3, "Private Cloud"){
           Person(Pilot, "RHSC Pilot")
+          Person(Supervisor, "RHSC Supervisor")
           System(ControlStation, "Control Station")
         }
 
@@ -35,7 +36,6 @@ This is the perfect illustration of the Open Hybrid Cloud.
           System(EdgeDevice, "Edge Device")
         }
 
-        Person(Supervisor, "RHSC Supervisor")
         Person(Public, "World Citizen")
 
       }

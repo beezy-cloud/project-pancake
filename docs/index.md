@@ -40,18 +40,16 @@ This is the perfect illustration of the Open Hybrid Cloud.
 
       }
 
-
       Rel(Pilot, ControlStation, "Generate a payload")
 
       Rel(ControlStation, PubNetwork, "Payload on Transit")
-      Rel(PubNetwork, ControlService, "")
+      Rel(PubNetwork, EdgeGateway, "")
       
       Rel(ControlStation, PrvNetwork, "Payload on Transit")
-      Rel(PrvNetwork, ControlService, "")
+      Rel(PrvNetwork, EdgeGateway, "")
       
-      Rel(ControlService, Prometheus, "")
+      Rel(EdgeGateway, Prometheus, "")
       Rel(Grafana, Prometheus, "")
-      Rel(ControlService, EdgeGateway, "Relay payload")
       Rel(EdgeGateway, EdgeDevice, "Execute payload and send back payload")
 
       Rel(Public, Website, "")

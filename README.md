@@ -6,3 +6,4 @@ This project is based on the fantastic work of IBM with their [OpenLiberty Space
 
 ! work in progress ! 
 
+Check out our [documentation](https://romdalf.github.io/project-pancake/) to start your own micro-service journey with edge devices!

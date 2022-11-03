@@ -54,7 +54,7 @@ This is the perfect illustration of the Open Hybrid Cloud.
       Rel(Public, Website, "")
       Rel(Personal, Grafana, "")
 
-      UpdateLayoutConfig($c4ShapeInRow="2", $c4BoundaryInRow="1")
+      UpdateLayoutConfig($c4ShapeInRow="2", $c4BoundaryInRow="2")
 ```
 
 <!-- 
@@ -64,4 +64,4 @@ This is the perfect illustration of the Open Hybrid Cloud.
       UpdateRelStyle(SystemAA, SystemC, $textColor="blue", $lineColor="blue", $offsetY="-40", $offsetX="-50")
       UpdateRelStyle(SystemC, customerA, $textColor="red", $lineColor="red", $offsetX="-50", $offsetY="20")
 
-      UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1") -->
+      UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="2") -->

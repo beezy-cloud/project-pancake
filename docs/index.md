@@ -20,7 +20,6 @@ This is the perfect illustration of the Open Hybrid Cloud.
         }
 
         Enterprise_Boundary(b2, "Public Cloud") {
-          System(LoadBalancer, "Load Balancer")
           Enterprise_Boundary(c1, "Red Hat OpenShift"){
             System(MongoDB, "MongoDB")
             System(Prometheus, "Prometheus")

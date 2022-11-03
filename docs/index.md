@@ -8,8 +8,7 @@ This is the perfect illustration of the Open Hybrid Cloud.
     C4Context
       title Project Pancake
       Enterprise_Boundary(b0, "") {
-        Person(Personal, "RHSC Personal")
-        Person(Public, "World Citizen")
+        Person(Pilot, "RHSC Pilot")
 
         Enterprise_Boundary(b3, "Private Cloud"){
           System(ControlStation, "Control Station")
@@ -36,7 +35,11 @@ This is the perfect illustration of the Open Hybrid Cloud.
         Enterprise_Boundary(b5, "Edge"){
           System(EdgeDevice, "Edge Device")
         }
+
+        Person(Supervisor, "RHSC Supervisor")
+        Person(Public, "World Citizen")
       }
+
 
       Rel(Personal, ControlStation, "Generate a payload")
 

@@ -47,7 +47,7 @@ This is the perfect illustration of the Open Hybrid Cloud.
       Rel(Public, Website, "")
       Rel(Supervisor, Grafana, "")
 
-      UpdateLayoutConfig($c4ShapeInRow="4", $c4BoundaryInRow="1")
+      UpdateLayoutConfig($c4ShapeInRow="4", $c4BoundaryInRow="2")
 ```
 
 <!-- 

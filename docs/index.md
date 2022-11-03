@@ -28,13 +28,18 @@ This is the perfect illustration of the Open Hybrid Cloud.
         }
 
         Enterprise_Boundary(b3, "Private Cloud"){
-          System(ControlService, "Control Service")
+          Enterprise_Boundary(c2, "Red Hat Edge Device"){ 
+            System(ControlService, "Control Service")
+          }
         }
 
         Enterprise_Boundary(b4, "Far Away"){
           System(EdgeGateway, "Edge Gateway")
+        }
+        Enterprise_Boundary(b5, "Far Far Away"){
           System(EdgeDevice, "Edge Device")
         }
+
       }
 
       Rel(Pilot, ControlStation, "Generate a payload")

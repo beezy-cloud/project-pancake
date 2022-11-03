@@ -15,11 +15,6 @@ This is the perfect illustration of the Open Hybrid Cloud.
           System(ControlStation, "Control Station")
         }
 
-        Enterprise_Boundary(b6, "Networking"){
-          System(PubNetwork, "Public Network Infrastructure")
-          System(PrvNetwork, "Private Mobile Network")
-        }
-
         Enterprise_Boundary(b2, "Public Cloud") {
           Enterprise_Boundary(c1, "OpenShift"){
             System(MongoDB, "MongoDB")
@@ -43,11 +38,7 @@ This is the perfect illustration of the Open Hybrid Cloud.
 
       Rel(Pilot, ControlStation, "Generate a payload")
 
-      Rel(ControlStation, PubNetwork, "Payload on Transit")
-      Rel(PubNetwork, EdgeGateway, "")
-      
-      Rel(ControlStation, PrvNetwork, "Payload on Transit")
-      Rel(PrvNetwork, EdgeGateway, "")
+      Rel(ControlStation, EdgeGateway, "Payload on Transit")
       
       Rel(EdgeGateway, Prometheus, "")
       Rel(Grafana, Prometheus, "")

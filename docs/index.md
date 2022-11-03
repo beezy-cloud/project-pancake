@@ -36,8 +36,9 @@ This is the perfect illustration of the Open Hybrid Cloud.
           System(EdgeDevice, "Edge Device")
         }
 
-        Person(Public, "World Citizen")
-
+        Enterprise_Boundary(b7, "Public"){ 
+          Person(Public, "World Citizen")
+        }
       }
 
       Rel(Pilot, ControlStation, "Generate a payload")

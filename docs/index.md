@@ -16,7 +16,7 @@ This is the perfect illustration of the Open Hybrid Cloud.
         System(MobileNetwork, "Private Mobile Network")
 
         Enterprise_Boundary(b1, "Undefined Location"){
-          System(ControlStationA, "Control Station")
+          System(ControlStation, "Control Station")
         }
 
         Enterprise_Boundary(b2, "Public Cloud") {
@@ -30,7 +30,6 @@ This is the perfect illustration of the Open Hybrid Cloud.
         }
 
         Enterprise_Boundary(b3, "Private Cloud"){
-          System(ControlStationB, "Control Station")
           System(ControlService, "Control Service")
         }
 
@@ -41,7 +40,11 @@ This is the perfect illustration of the Open Hybrid Cloud.
       }
 
 
-      BiRel(Pilot, ControlStationA, "Generate a payload")
+      Rel(Pilot, ControlStation, "Generate a payload")
+      Rel(ControlStation, Internet, "Payload on Transit")
+      Rel(ControlStation, MobileNetwork, "Payload on Transit")
+      Rel(ControlStation, Prometheus)
+      Rel(Grafana, Prometheus)
       BiRel(Pilot, ControlStationB, "Generate a payload")
       Rel(ControlStationA, ControlService, "Send payload")
       Rel(ControlStationA, ControlService, "Send payload")      

@@ -27,9 +27,8 @@ This is the perfect illustration of the Open Hybrid Cloud.
         }
 
         Enterprise_Boundary(b3, "Private Cloud"){
-            System(ControlStation, "Control Station")
-            System(ControlService, "Control Service")
-          }
+          System(ControlStation, "Control Station")
+          System(ControlService, "Control Service")
         }
 
         Enterprise_Boundary(b4, "Edge Gateway"){
@@ -38,7 +37,6 @@ This is the perfect illustration of the Open Hybrid Cloud.
         Enterprise_Boundary(b5, "Edge"){
           System(EdgeDevice, "Edge Device")
         }
-
       }
 
       Rel(Pilot, ControlStation, "Generate a payload")

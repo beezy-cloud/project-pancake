@@ -11,7 +11,7 @@ This is the perfect illustration of the Open Hybrid Cloud.
         Person(Pilot, "RHSC Personal")
         Person(Public, "World Citizen")
 
-        Enterprise_Boundary(b6, "Undefined Location"){
+        Enterprise_Boundary(b6, "Networking"){
           System(PubNetwork, "Public Network Infrastructure")
           System(PrvNetwork, "Private Mobile Network")
         }

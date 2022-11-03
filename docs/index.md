@@ -46,6 +46,9 @@ This is the perfect illustration of the Open Hybrid Cloud.
       Rel(ControlStationA, ControlService, "Send payload")      
       Rel(ControlService, EdgeGateway, "Relay payload")
       Rel(EdgeGateway, EdgeDevice, "Execute payload and send back payload")
+
+```
+
 <!-- 
       UpdateElementStyle(customerA, $fontColor="red", $bgColor="grey", $borderColor="red")
       UpdateRelStyle(customerA, SystemAA, $textColor="blue", $lineColor="blue", $offsetX="5")
@@ -54,4 +57,3 @@ This is the perfect illustration of the Open Hybrid Cloud.
       UpdateRelStyle(SystemC, customerA, $textColor="red", $lineColor="red", $offsetX="-50", $offsetY="20")
 
       UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1") -->
-```

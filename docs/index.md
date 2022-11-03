@@ -38,10 +38,11 @@ This is the perfect illustration of the Open Hybrid Cloud.
 
         Person(Supervisor, "RHSC Supervisor")
         Person(Public, "World Citizen")
+
       }
 
 
-      Rel(Personal, ControlStation, "Generate a payload")
+      Rel(Pilot, ControlStation, "Generate a payload")
 
       Rel(ControlStation, PubNetwork, "Payload on Transit")
       Rel(PubNetwork, ControlService, "")
@@ -55,7 +56,7 @@ This is the perfect illustration of the Open Hybrid Cloud.
       Rel(EdgeGateway, EdgeDevice, "Execute payload and send back payload")
 
       Rel(Public, Website, "")
-      Rel(Personal, Grafana, "")
+      Rel(Supervisor, Grafana, "")
 
       UpdateLayoutConfig($c4ShapeInRow="2", $c4BoundaryInRow="1")
 ```

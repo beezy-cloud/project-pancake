@@ -13,7 +13,6 @@ This is the perfect illustration of the Open Hybrid Cloud.
 
         Enterprise_Boundary(b6, "Networking"){
           Enterprise_Boundary(b1, "Undefined Location"){
-            System(ControlStation, "Control Station")
           }
           System(PubNetwork, "Public Network Infrastructure")
           System(PrvNetwork, "Private Mobile Network")
@@ -21,7 +20,7 @@ This is the perfect illustration of the Open Hybrid Cloud.
 
 
         Enterprise_Boundary(b2, "Public Cloud") {
-          Enterprise_Boundary(c1, "Red Hat OpenShift"){
+          Enterprise_Boundary(c1, "OpenShift"){
             System(MongoDB, "MongoDB")
             System(Prometheus, "Prometheus")
             System(Grafana, "Grafana")
@@ -30,15 +29,15 @@ This is the perfect illustration of the Open Hybrid Cloud.
         }
 
         Enterprise_Boundary(b3, "Private Cloud"){
-          Enterprise_Boundary(c2, "Red Hat Edge Device"){ 
+            System(ControlStation, "Control Station")
             System(ControlService, "Control Service")
           }
         }
 
-        Enterprise_Boundary(b4, "Far Away"){
-          System(EdgeGateway, "Edge Gateway")
+        Enterprise_Boundary(b4, "Edge Gateway"){
+          System(EdgeGateway, "Edge Device")
         }
-        Enterprise_Boundary(b5, "Far Far Away"){
+        Enterprise_Boundary(b5, "Edge"){
           System(EdgeDevice, "Edge Device")
         }
 

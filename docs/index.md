@@ -11,7 +11,7 @@ This is the perfect illustration of the Open Hybrid Cloud.
 
         Enterprise_Boundary(b3, "Private Cloud"){
           Person(Pilot, "RHSC Pilot")
-          Person(Supervisor, "RHSC Supervisor")
+          Person(Supervisor, "RHSC NOC")
           System(ControlStation, "Control Station")
         }
 
@@ -36,18 +36,18 @@ This is the perfect illustration of the Open Hybrid Cloud.
         }
       }
 
-      Rel(Pilot, ControlStation, "Generate a payload")
+      Rel(Pilot, ControlStation, "")
 
-      Rel(ControlStation, EdgeGateway, "Payload on Transit")
+      Rel(ControlStation, EdgeGateway, "")
       
       Rel(EdgeGateway, Prometheus, "")
       Rel(Grafana, Prometheus, "")
-      Rel(EdgeGateway, EdgeDevice, "Execute payload and send back payload")
+      Rel(EdgeGateway, EdgeDevice, "")
 
       Rel(Public, Website, "")
       Rel(Supervisor, Grafana, "")
 
-      UpdateLayoutConfig($c4ShapeInRow="2", $c4BoundaryInRow="1")
+      UpdateLayoutConfig($c4ShapeInRow="4", $c4BoundaryInRow="1")
 ```
 
 <!-- 

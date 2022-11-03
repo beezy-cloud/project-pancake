@@ -38,6 +38,7 @@ This is the perfect illustration of the Open Hybrid Cloud.
           System(EdgeGateway, "Edge Gateway")
           System(EdgeDevice, "Edge Device")
         }
+      }
 
 
       BiRel(Pilot, ControlStationA, "Generate a payload")

@@ -14,6 +14,10 @@ This is the perfect illustration of the Open Hybrid Cloud.
           Person(Supervisor, "RHSC NOC")
           System(ControlStation, "Control Station")
         }
+        
+        Enterprise_Boundary(b4, "Edge Gateway"){
+          System(EdgeGateway, "Control Service")
+        }
 
         Enterprise_Boundary(b2, "Public Cloud") {
           Enterprise_Boundary(c1, "OpenShift"){
@@ -24,9 +28,7 @@ This is the perfect illustration of the Open Hybrid Cloud.
           }
         }
 
-        Enterprise_Boundary(b4, "Edge Gateway"){
-          System(EdgeGateway, "Control Service")
-        }
+
         Enterprise_Boundary(b5, "Edge"){
           System(EdgeDevice, "Edge Device")
         }

@@ -29,7 +29,7 @@ theme:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: black
+      primary: red
       accent: red
       toggle:
         icon: material/brightness-7
@@ -38,7 +38,7 @@ theme:
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: black
+      primary: red
       accent: red
       toggle:
         icon: material/brightness-4
@@ -74,13 +74,14 @@ markdown_extensions:
 
 nav:
   - About: 'index.md'
-  - Release notes: 'release_notes.md'
-  - About: 
+  - Release Notes: 'releases.md'
+  - Architecture:
+    - Concepts: 'concepts.md' 
     - Architecture: 'architecture.md'
-    - Bill Of Materials: 'bom.md'
   - Deploying:
-    - Build the device: 'hudriv.md' 
-    - Deploy the software: 'dev.md'
+    - Requirements: 'bom.md'
+    - Hardware Build: 'hardware.md' 
+    - Software Buidl: 'software.md'
     - Operating: 'ops.md' 
   - Contributing: 
     - Guidelines: 'CONTRIBUTING.md'

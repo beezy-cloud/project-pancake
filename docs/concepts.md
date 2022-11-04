@@ -30,7 +30,8 @@ On top of this, since the container will include the necessary libraries for the
 
 ## Microservice
 The concept of microservice is often associated with the containerization of applications. While an application could be composed of multiple modules composing a single unit, microservices would decouple these modules in multiple small servides.  
-As an example, if an online retail company as an e-commerce, this application might pack as one single unit (also called monolith) the following modules:   
+
+As an example, if an online retail company as an e-commerce, this application might be composed of the following modules:   
 
 - front-end web module
 - search module 
@@ -38,6 +39,20 @@ As an example, if an online retail company as an e-commerce, this application mi
 - payment module
 - shipping module
 - caching module
+
+In a non microservice architecture, also called monolithic architecture, all the modules will be packed within a single unit: 
+
+```mermaid
+    erDiagram
+    E-COMMERCE {
+      dep search
+      dep suggestion
+      dep payment
+      dep shipping
+      dep caching
+    }
+```
+
 
 Within the world of microservice and container, these modules would all have their own container, so 6 containers, instead of 1.  
 This approach provides more flexibility from a development and lifecycle perspectice as patching or updating the code from one of the services would not impact the entire stack. 

@@ -55,7 +55,6 @@ In a non microservice architecture, also called monolithic architecture, all the
 ```
 
 Within the world of microservice and container, these modules would all have their own container, so 6 containers, instead of 1.  
-This approach provides more flexibility from a development and lifecycle perspectice as patching or updating the code from one of the services would not impact the entire stack. 
 
 ```mermaid
    erDiagram
@@ -73,7 +72,14 @@ This approach provides more flexibility from a development and lifecycle perspec
    CART ||--|| SHIPPING : select
    SHIPPING ||--|| PAYMENT : transact
 ```
-Having the Suggestion module failing will not impact the entire shopping experience but reduce potential upsell. 
+This approach provides more flexibility from a development and lifecycle perspectice as patching or updating the code from one of the services would not impact the entire stack. 
+Also, having the Suggestion module failing will not impact the entire shopping experience but reduce potential upsell.  
+Finally, the concept of "Service Mesh" can be introduced to monitor specific metrics that could impact the shopping experience. Here are three examples:  
+
+- If the shopping experience is consider slow or even timeout, each relationship is reporting metrics (e.g. latency) can be analyzed and define which part of the stack is the root cause.
+- With microservices, code changes are granular. This allows the dev team to appreciate the impact on the overall experience. 
+- Very closed to the previous example, this architecture allows to introduce multiple version of a module within the stack and perform A/B testing scenario with/out user experience feedback.
+
 
 [Microservices on Wikipedia](https://en.wikipedia.org/wiki/Microservices)  
 

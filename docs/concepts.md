@@ -44,19 +44,24 @@ In a non microservice architecture, also called monolithic architecture, all the
 
 ```mermaid
     erDiagram
+    CUSTOMER ||--o{ E-COMMERCE : place order
     E-COMMERCE {
-      dep search
-      dep suggestion
-      dep payment
-      dep shipping
-      dep caching
+      module search
+      module suggestion
+      module payment
+      module shipping
+      module caching
     }
 ```
-
 
 Within the world of microservice and container, these modules would all have their own container, so 6 containers, instead of 1.  
 This approach provides more flexibility from a development and lifecycle perspectice as patching or updating the code from one of the services would not impact the entire stack. 
 Also, having the shipping module failing will not impact the entire shopping experience as the transactions will be reconciled later. 
+
+```mermaid
+   erDiagram
+   
+```
 
 [Microservices on Wikipedia](https://en.wikipedia.org/wiki/Microservices)  
 

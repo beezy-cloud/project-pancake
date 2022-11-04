@@ -3,20 +3,20 @@ The below concept definitions are based on field user experience and not from an
 
 ## Edge[^1]
 
-## Container[ˆ2]
+## Container[^2]
 
-## Microservice[ˆ3]
+## Microservice[^3]
 
 ## Kubernetes[^4]
 
-## GitOps[ˆ5]
+## GitOps[^5]
 
 
 
 
 
-[^1]: [Edge device](https://en.wikipedia.org/wiki/Edge_device)  
-[ˆ2]: [Containerization](https://en.wikipedia.org/wiki/Containerization_(computing))  
-[ˆ3]: [Microservices](https://en.wikipedia.org/wiki/Microservices)  
-[ˆ4]: [Kubernetes](https://en.wikipedia.org/wiki/Kubernetes)  
-[ˆ5]: [GitOps](https://en.wikipedia.org/wiki/DevOps#GitOps)  
+[^1]: [Edge device](https://en.wikipedia.org/wiki/Edge_device)   
+[^2]: [Containerization](https://en.wikipedia.org/wiki/Containerization_(computing))   
+[^3]: [Microservices](https://en.wikipedia.org/wiki/Microservices)  
+[^4]: [Kubernetes](https://en.wikipedia.org/wiki/Kubernetes)  
+[^5]: [GitOps](https://en.wikipedia.org/wiki/DevOps#GitOps)  

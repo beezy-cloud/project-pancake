@@ -113,6 +113,10 @@ spec:
 [Kubernetes on Wikipedia](https://en.wikipedia.org/wiki/Kubernetes)  
 
 ## GitOps
-
+GitOps is an umbrella practice composed of Culture (Dev & Ops working together), Infrastructure-as-Code, and Automation - mainly, if not only, used with Kubernetes.  
+GitOps is usually depending on an automation tool, like ArgoCD or FluxCD, accessing Git repositories with either or both infrastructure and application YAML configuration manifests.  
+The automation tool will track the configuration state in both the Git repositories and the Kubernetes clusters. If one shows a difference of configuration, a out-of-sync or drift will be notified with the ability to:
+- sync the Kubernetes cluster with the new configuration defintion with the Git repository.
+- rollback the Kubernetes cluster state with the known one from the Git repository.  
  
 [GitOps on Wikipedia](https://en.wikipedia.org/wiki/DevOps#GitOps)  

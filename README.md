@@ -6,4 +6,4 @@ This project is based on the fantastic work of IBM with their [OpenLiberty Space
 
 ! work in progress ! 
 
-Check out our [documentation](https://romdalf.github.io/project-pancake/) to start your own microservice journey with edge devices!
+Check out our [documentation](https://docs.beezy.cloud) to start your own microservice journey with edge devices!

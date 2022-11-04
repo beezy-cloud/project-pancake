@@ -62,9 +62,11 @@ Also, having the shipping module failing will not impact the entire shopping exp
 ```mermaid
    erDiagram
    CUSTOMER ||--o{ FRONT-END : buy
-   FRONT-END ||--o{ SEARCH : lookup
-   SUGGESTION ||--o{ SEARCH : influence
-   SEARCH }o--o{ CACHING : accelerate
+   FRONT-END ||--o{ SEARCH : query
+   SEARCH }o--o{ DATABASE: lookup
+   SUGGESTION ||--o{ DATABASE : influence
+   DATABASE ||--|| CACHING: accelerate
+   CACHING }o--o{ SEARCH: expose
    SEARCH }o--|| CART : add
    CART ||--|| SHIPPING : select
    SHIPPING ||--|| PAYMENT : transact

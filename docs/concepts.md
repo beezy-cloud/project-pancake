@@ -64,8 +64,8 @@ Also, having the shipping module failing will not impact the entire shopping exp
    CUSTOMER ||--o{ FRONT-END : buy
    FRONT-END ||--o{ SEARCH : lookup
    SUGGESTION ||--o{ SEARCH : influence
-   CACHING ||--o{ SEARCH : accelerate
-   CACHING ||--o{ SUGGESTION : accelerate
+   SEARCH ||--o{ CACHING : accelerate
+   SUGGESTION ||--o{ CACHING : accelerate
    FRONT-END ||--o{ CART : review
    FRONT-END ||--o{ SHIPPING : select
    SHIPPING ||--o{ CART : select

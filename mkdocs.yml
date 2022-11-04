@@ -80,8 +80,8 @@ nav:
     - Architecture: 'architecture.md'
   - Deploying:
     - Requirements: 'bom.md'
-    - Hardware Build: 'hardware.md' 
-    - Software Buidl: 'software.md'
+    - Hardware: 'hardware.md' 
+    - Software: 'software.md'
     - Operating: 'ops.md' 
   - Contributing: 
     - Guidelines: 'CONTRIBUTING.md'

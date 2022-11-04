@@ -29,19 +29,19 @@ theme:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: red
+      primary: black
       accent: red
       toggle:
-        icon: material/brightness-7
+        icon: material/weather-sunny
         name: Switch to dark mode
 
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: red
+      primary: black
       accent: red
       toggle:
-        icon: material/brightness-4
+        icon: material/weather-night
         name: Switch to system preference
 extra_css: 
   - stylesheets/extra.css

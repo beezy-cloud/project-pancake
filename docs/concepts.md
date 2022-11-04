@@ -2,7 +2,7 @@
 The below concept definitions are based on field user experience and not from an academic standpoint. The latter will have a foot note reference.  
 
 ## Edge
-Depending of the industry and core business, the definition of Edge computing might be totally different.  
+Depending of the industry and core business, the concept of Edge computing might be totally different.  
 From a generic standpoint, edge computing is a device outside of the main computing premise of an organization ranging from a branch office to a water level sensor.  
 
 Here are some generic use cases:
@@ -18,7 +18,7 @@ Considering this scenario, an Edge gateway might be used to repeat the data path
 [Edge device on Wikipedia](https://en.wikipedia.org/wiki/Edge_device)  
 
 ## Container
-The term container is used to define a way to package an application with the necessary libraries for this application to run.  
+The concept of container is used to define a way to package an application with the necessary libraries for this application to run.  
 That packaging is supposed to run seamlessly on any container platforms regardless of its composition as long as the packaging is respectfull of the open standards ([OCI](https://opencontainers.org/about/overview/)).  
 In other words, there is not need anymore to perform deep compatibility analysis to ensure an application can run a specific version of Linux with libraries and hardware.  
 On top of this, since the container will include the necessary libraries for the application to run, any patching or upgrade at the lower level, aka the Operating System, will not impact the application.  
@@ -26,6 +26,18 @@ On top of this, since the container will include the necessary libraries for the
 [Containerization on Wikipedia](https://en.wikipedia.org/wiki/Containerization_(computing)) 
 
 ## Microservice
+The concept of microservice is often associated with the containerization of applications. While an application could be composed of multiple modules composing a single unit, microservices would decouple these modules in multiple small servides.  
+As an example, if an online retail company as an e-commerce, this application might pack as one single unit (also called monolith) the following modules: 
+- front-end web module
+- search module 
+- suggestion module
+- payment module
+- shipping module
+- caching module
+
+Within the world of microservice and container, these modules would all have their own container, so 6 containers, instead of 1.  
+This approach provides more flexibility from a development and lifecycle perspectice as patching or updating the code from one of the service would not impact the entire stack. 
+Also, having the shipping module failing will not impact the entire shopping experience as the transactions will be reconciled later. 
 
 [Microservices on Wikipedia](https://en.wikipedia.org/wiki/Microservices)  
 

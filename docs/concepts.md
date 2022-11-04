@@ -16,6 +16,10 @@ Within Project Pancake, our Edge device is a piece of equipment hundred miles aw
 Considering this scenario, an Edge gateway might be used to repeat the data path from a down- and upstream perspective to avoid data lost. 
 
 ## Container[^2]
+The term container is used to define a way to package an application with the necessary libraries for this application to run.  
+That packaging is supposed to run seamlessly on any container platforms regardless of its composition as long as the packaging is respectfull of the open standards ([OCI](https://opencontainers.org/about/overview/)).  
+In other words, there is not need anymore to perform deep compatibility analysis to ensure an application can run a specific version of Linux with libraries and hardware.  
+On top of this, since the container will include the necessary libraries for the application to run, any patching or upgrade at the lower level, aka the Operating System, will not impact the application.  
 
 ## Microservice[^3]
 

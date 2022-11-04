@@ -63,10 +63,10 @@ Also, having the shipping module failing will not impact the entire shopping exp
    erDiagram
    CUSTOMER ||--o{ FRONT-END : buy
    FRONT-END ||--o{ SEARCH : query
-   SEARCH }o--o{ SUGGESTION: enrich
-   SUGGESTION ||--o{ DATABASE : influence
+   SEARCH }o--o{ SUGGESTION: influence
+   SUGGESTION ||--o{ DATABASE : enrich
    DATABASE ||--|| CACHING: accelerate
-   CACHING }o--o{ SEARCH: expose
+   CACHING }o--o{ SEARCH: return
    SEARCH }o--|| CART : add
    CART ||--|| SHIPPING : select
    SHIPPING ||--|| PAYMENT : transact

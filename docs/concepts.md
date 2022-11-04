@@ -64,10 +64,10 @@ Also, having the shipping module failing will not impact the entire shopping exp
    CUSTOMER ||--o{ FRONT-END : buy
    FRONT-END ||--o{ SEARCH : lookup
    SUGGESTION ||--o{ SEARCH : influence
-   SEARCH ||--o{ CACHING : accelerate
-   SEARCH ||--o{ CART : add
-   CART ||--o{ SHIPPING : select
-   SHIPPING ||--o{ PAYMENT : transact
+   SEARCH }o--o{ CACHING : accelerate
+   SEARCH }o--|| CART : add
+   CART ||--|| SHIPPING : select
+   SHIPPING ||--|| PAYMENT : transact
 ```
 
 [Microservices on Wikipedia](https://en.wikipedia.org/wiki/Microservices)  

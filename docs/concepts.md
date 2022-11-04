@@ -67,7 +67,6 @@ Also, having the shipping module failing will not impact the entire shopping exp
    SEARCH ||--o{ CACHING : accelerate
    SEARCH ||--o{ CART : add
    CART ||--o{ SHIPPING : select
-   SHIPPING ||--o{ CART : select
    CART ||--o{ PAYMENT : transact
 ```
 

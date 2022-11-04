@@ -13,7 +13,7 @@ The setup is composed of:
   - a control service 
 - an Edge device 
 
-The scenario is as follow:  
+The scenario is as follow:   
 
 - an user controls remotely a device by gesture captured via a webcam on the control station.
 - the control station sends the gestures to the control service.
@@ -28,4 +28,4 @@ Considering this scenario, the Edge gateway could either be:
 - a Red Hat OpenShift remote worker
 - a Red Hat Edge Device with Podman or Microshift
 
-This scenario will be explored. 
+This scenario will be explored.   

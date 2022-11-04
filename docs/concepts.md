@@ -46,6 +46,7 @@ In a non microservice architecture, also called monolithic architecture, all the
     erDiagram
     CUSTOMER ||--o{ E-COMMERCE : buy
     E-COMMERCE {
+      module front-end
       module search
       module suggestion
       module payment
@@ -60,7 +61,15 @@ Also, having the shipping module failing will not impact the entire shopping exp
 
 ```mermaid
    erDiagram
-   
+   CUSTOMER ||--o{ FRONT-END : buy
+   FRONT-END ||--| SEARCH
+   SEARCH ||--| SUGGESTION
+   CACHING ||--| SEARCH
+   CACHING ||--| SUGGESTION
+   FRONT-END ||--| CART
+   FRONT-END ||--| SHIPPING
+   SHIPPING ||--| CART
+   CART ||--| PAYMENT
 ```
 
 [Microservices on Wikipedia](https://en.wikipedia.org/wiki/Microservices)  

@@ -44,7 +44,6 @@ In a non microservice architecture, also called monolithic architecture, all the
 
 ```mermaid
     erDiagram
-    CUSTOMER ||--o{ E-COMMERCE : buy
     E-COMMERCE {
       module front-end
       module search

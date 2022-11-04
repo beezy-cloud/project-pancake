@@ -63,7 +63,7 @@ Also, having the shipping module failing will not impact the entire shopping exp
    erDiagram
    CUSTOMER ||--o{ FRONT-END : buy
    FRONT-END ||--o{ SEARCH : query
-   SEARCH }o--o{ DATABASE: lookup
+   SEARCH }o--o{ SUGGESTION: enrich
    SUGGESTION ||--o{ DATABASE : influence
    DATABASE ||--|| CACHING: accelerate
    CACHING }o--o{ SEARCH: expose

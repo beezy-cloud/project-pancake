@@ -42,6 +42,72 @@ Also, having the shipping module failing will not impact the entire shopping exp
 [Microservices on Wikipedia](https://en.wikipedia.org/wiki/Microservices)  
 
 ## Kubernetes
+Kubernetes is a platform to orchestrate containers leveraging a set of software to abstract every infrastructure layers (compute, network, storage, security, ...) into plain natural english.  
+E.g. Configuring a TLS terminate endpoint for a web application:
+- legacy: interact with LAN, WAN, load balancer and firewall devices, requesting a SSL certificate to a third party and loading it into a load balancer context.  
+This use case requires the expertize of multiple resources with a long lead time. 
+- Kubernetes: using a YAML declarative manifest, the below will create two Services to access a container running a web service, then create an ingress rule for two custom URLs, and generating at creation time the TLS certificate via Let's Encrypt for the NGINX Ingress Controller. Note that at this stage, trying to access the URL on port 80 will trigger an automatic redirect to the TLS endpoint.   
+The below can be handled by the Application Team without the need to wait on the Ops expertize reducing the lead time to the entire software supply chain.
+
+```YAML
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo1
+spec:
+  ports:
+  - port: 80
+    targetPort: 5678
+  selector:
+    app: echo1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo2
+spec:
+  ports:
+  - port: 80
+    targetPort: 5678
+  selector:
+    app: echo2
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: echo-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt"
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  tls:
+  - hosts:
+    - echo1.example.com
+    - echo2.example.com
+    secretName: echo-tls
+  rules:
+    - host: echo1.example.com
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: echo1
+                port:
+                  number: 80
+    - host: echo2.example.com
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: echo2
+                port:
+                  number: 80
+```
 
 
 [Kubernetes on Wikipedia](https://en.wikipedia.org/wiki/Kubernetes)  

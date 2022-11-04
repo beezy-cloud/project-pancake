@@ -1,12 +1,12 @@
 site_name: project pancake 
-site_url: https://docs.trousseau.io
+site_url: https://docs.beezy.cloud
 
 plugins:
   - git-revision-date-localized:
       enable_creation_date: true
   - git-authors
   - git-committers:
-      repository: trousseau-io/docs.trousseau.io
+      repository: beezy-cloud/project-pancake
       branch: main 
 #       token: !ENV GH_TOKEN
 
@@ -48,11 +48,11 @@ extra_css:
 extra:
   social:
     - icon: fontawesome/brands/github 
-      link: https://github.com/romdalf/project-pancake
+      link: https://github.com/beezy-cloud/project-pancake
   generator: true
 copyright: Apache-2.0 License. 
-repo_url: https://github.com/romdalf/project-pancake 
-repo_name: romdalf/project-pancake
+repo_url: https://github.com/beezy-cloud/project-pancake 
+repo_name: beezy-cloud/project-pancake
 edit_uri: edit/main/docs/
 
 markdown_extensions:

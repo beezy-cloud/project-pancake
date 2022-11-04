@@ -51,9 +51,9 @@ Kubernetes is a platform to orchestrate containers leveraging a set of software 
 E.g. Configuring a TLS terminate endpoint for a web application:  
 
 - legacy: interact with LAN, WAN, load balancer and firewall devices, requesting a SSL certificate to a third party and loading it into a load balancer context.  
-**This use case requires the expertise of multiple resources with a long lead time.**   
+***This use case requires the expertise of multiple resources with a long lead time.***   
 - Kubernetes: using a YAML declarative manifest, the below will create two Services to access a container running a web service, then create an ingress rule for two custom URLs, and generating at creation time the TLS certificate via Let's Encrypt for the NGINX Ingress Controller. Note that at this stage, trying to access the URL on port 80 will trigger an automatic redirect to the TLS endpoint.   
-**The below can be handled by the Application Team without the need to wait on the Ops expertise reducing the lead time to the entire software supply chain.**
+***The below can be handled by the Application Team without the need to wait on the Ops expertise reducing the lead time to the entire software supply chain.***
 
 ```YAML
 ---

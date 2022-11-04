@@ -62,14 +62,14 @@ Also, having the shipping module failing will not impact the entire shopping exp
 ```mermaid
    erDiagram
    CUSTOMER ||--o{ FRONT-END : buy
-   FRONT-END ||--| SEARCH
-   SEARCH ||--| SUGGESTION
-   CACHING ||--| SEARCH
-   CACHING ||--| SUGGESTION
-   FRONT-END ||--| CART
-   FRONT-END ||--| SHIPPING
-   SHIPPING ||--| CART
-   CART ||--| PAYMENT
+   FRONT-END ||--| SEARCH : lookup
+   SUGGESTION ||--| SEARCH : influence
+   CACHING ||--| SEARCH : accelerate
+   CACHING ||--| SUGGESTION : accelerate
+   FRONT-END ||--| CART : review
+   FRONT-END ||--| SHIPPING : select
+   SHIPPING ||--| CART : select
+   CART ||--| PAYMENT : transact
 ```
 
 [Microservices on Wikipedia](https://en.wikipedia.org/wiki/Microservices)  

@@ -65,9 +65,9 @@ Also, having the shipping module failing will not impact the entire shopping exp
    FRONT-END ||--o{ SEARCH : query
    SEARCH }o--o{ SUGGESTION: influence
    SUGGESTION {
-    search "previous transaction"
-    search "previous search"
-    search "similar searches from other users"
+    search previousTransaction
+    search previousSearch
+    search similarSearchesOthers
    }
    SUGGESTION ||--o{ DATABASE : enrich
    DATABASE ||--|| CACHING: accelerate

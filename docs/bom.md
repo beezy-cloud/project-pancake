@@ -17,8 +17,8 @@
 | 1   | Arduino UNO REV3                         | $28   | 1 pcs   | 1    | 
 | 1   | HiLetgo ESP8266 NodeMCU CP2102 ESP-12E   | $8    | 1 pcs   | 1    | 
 | 1   | HiLetgo Mifare RC522 RF + S50 Blank Card | $6    | 1 pcs   | 1    |
-| 1   | ALMOCN Breadboard Power Supply           | $8    | 3 pcs   | 1    | 
-| 1   | KeeYees L298N Motor Kit with Jump Wires  | $17   | 1 pcs   | 1    | 
+| 1   | [ALMOCN Breadboard Power Supply]           | $8    | 3 pcs   | 1    | 
+| 1   | [KeeYees L298N Motor Kit with Jump Wires] (https://www.amazon.com/dp/B07ZT619TD)  | $17   | 1 pcs   | 1    | 
 | 1   | ELEGOO 400 tie-points breadboard         | $8    | 3 pcs   | 2    |
 
 #### Edge Gateway
@@ -28,5 +28,8 @@
 - Git CLI 
 - Python3
 - Kubernetes CLI (kubectl) 
-- 1-node Kubernetes cluster (OpenShift will be used)
+- 1-node Kubernetes cluster (OpenShift will be used)  
+
+    
+    
 

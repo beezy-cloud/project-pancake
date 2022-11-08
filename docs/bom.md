@@ -12,18 +12,29 @@
 - a webcam to control the Edge device via gesture (optional)
 
 #### Edge device
-| QTY | Article                                  | Price | Pack of | Need |
-|-----|------------------------------------------|-------|---------|------|
-| 1   | [Arduino UNO REV3](https://www.amazon.com/dp/B008GRTSV6) | $28   | 1 pcs   | 1    | 
-| 1   | [HiLetgo ESP8266 NodeMCU CP2102 ESP-12E](https://www.amazon.com/dp/B010O1G1ES)   | $8    | 1 pcs   | 1    | 
-| 1   | [HiLetgo Mifare RC522 RF + S50 Blank Card](https://www.amazon.com/dp/B01CSTW0IA) | $6    | 1 pcs   | 1    |
-| 1   | [HiLetgo Breadboard Power Supply](https://www.amazon.com/HiLetgo-Supply-Module-Prototype-Breadboard/dp/B00HJ6AE72) | $8    | 5 pcs   | 1    | 
-| 1   | [KeeYees L298N Motor Kit with Jump Wires](https://www.amazon.com/dp/B07ZT619TD)  | $17   | 1 pcs   | 1    | 
-| 1   | [ELEGOO 400 tie-points breadboard](https://www.amazon.com/dp/B01EV640I6)         | $8    | 3 pcs   | 2    |
-|     | TOTAL | $75 | | |
+
+The original kit from the IBM OpenLiberty project is slightly different and requires extra knowledge about electronics.   
+This version of the kit reduces the size, parts, wiring and cost. 
+
+| QTY | Article                                   | Price | Pack of | Need |
+|-----|------------------------------------------ |-------|---------|------|
+| 1   | Rapsberry Pi PICO Wireless                | $14   |  1      | 1    | 
+| 1   | Freenove Breakout board Raspberry Pi Pico | $11   |  1      | 1    | 
+| 1   | KeeYees L298N Motor Kit with Jump Wires   | $17   |  2      | 1    | 
+| 1   | HiLetGo Mifare RC522 RF + S50 Blank Card  | $6    |  1      | 1    | 
+| 1   | HiLetGo 9V Battery Clip                   | $5    | 10      | 1    | 
+| 1   | USB to micro USB cable                    | $9    |  5      | 1    | 
+|     | TOTAL                                     | $62   |         |      | 
+ 
+Vendors are having interesting discounts when bulk ordering which can decrease significantly the costs:
+
+| x-KIT | TOTAL Price | PRICE per UNIT | 
+| 3     |  $133       | $44            | 
+| 5     |  $207       | $41            | 
+| 10    |  $342       | $34            |
 
 #### Edge Gateway
-- TODO and optional
+The Edge gateway is an optional component to illustraste the need to guarantee the last miles towards the Edge devices when networking could be flaky. 
 
 ### Software
 - Git CLI 

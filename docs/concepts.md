@@ -1,5 +1,5 @@
 
-The below concept definitions are based on field user experience and not from an academic standpoint. The latter will have a link to a Wikipedia reference.  
+The below concept definitions are based on field user experience and not from an academic standpoint. The latter will have a link to a Wikipedia reference for a non bias definition.  
 
 ## Edge
 Depending on the industry and core business, the concept of Edge computing might be totally different.  

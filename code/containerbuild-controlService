@@ -1,0 +1,11 @@
+from sha256:5bcfa202c6df7ad9d7d2f91ae625a9d3cc0ca19ea27d5c62bc95b45484214042
+
+RUN pip3 install --upgrade pip3
+
+WORKDIR /controlService
+COPY controlService/* /controlService/
+
+RUN pip3 --no-cache-dir install -r deps.txt
+
+ENTRYPOINT ["python3"]
+CMD ["controlService.py"]

@@ -18,8 +18,39 @@ import time
 import network
 import socket
 
-## motor setup ###########################################################
+## NFC reader ############################################################
+# import NFC reader library
+from mfrc522 import MFRC522
 
+# connecting to network 
+reader = MFRC522(spi_id=0,sck=2,miso=4,mosi=3,cs=1,rst=0)
+
+def cardReader():
+    while True: 
+        reader.init()
+        (stat, tag_type) = reader.request(reader.REQIDL)
+        if stat == reader.OK:
+            (stat, uid) - reader.SelectTagSN
+            if stat == reader.OK:
+                card = int.from_bytes(bytes(uid), "little", False)
+                print("OBJECT ID "+str(card))
+    sleep(1)
+    objectID = str(card)
+    return objectID
+
+
+    if not wlan.isconnected():
+        print('connecting to network...')
+        wlan.connect(networkName, networkPassword)
+        while not wlan.isconnected():
+            print('waiting for connection...')
+            pass 
+    ip = wlan.ifconfig()[0]
+    print(f'Connected on {ip}')
+    return ip 
+
+
+## motor setup ###########################################################
 # defined used pins on the board
 motorOneFW = Pin(18, Pin.OUT)
 motorOneBW = Pin(19, Pin.OUT)
@@ -143,6 +174,7 @@ def webServer(connection):
         client.close()
 
 try:
+    cardReader()
     ip = connecting()
     connection = networkSocket(ip)
     webServer(connection)

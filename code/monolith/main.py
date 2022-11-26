@@ -17,6 +17,7 @@ from machine import Pin
 import time 
 import network
 import socket
+import utime
 
 ## NFC reader ############################################################
 # import NFC reader library
@@ -24,31 +25,27 @@ from mfrc522 import MFRC522
 
 # connecting to network 
 reader = MFRC522(spi_id=0,sck=2,miso=4,mosi=3,cs=1,rst=0)
+previousCard = [0]
 
 def cardReader():
     while True: 
         reader.init()
         (stat, tag_type) = reader.request(reader.REQIDL)
+        if uid == previousCard:
+            continue
         if stat == reader.OK:
-            (stat, uid) - reader.SelectTagSN
+            (stat, uid) = reader.SelectTagSN()
             if stat == reader.OK:
-                card = int.from_bytes(bytes(uid), "little", False)
-                print("OBJECT ID "+str(card))
-    sleep(1)
-    objectID = str(card)
-    return objectID
-
-
-    if not wlan.isconnected():
-        print('connecting to network...')
-        wlan.connect(networkName, networkPassword)
-        while not wlan.isconnected():
-            print('waiting for connection...')
-            pass 
-    ip = wlan.ifconfig()[0]
-    print(f'Connected on {ip}')
-    return ip 
-
+                print("Card detected {}  uid={}".format(hex(int.from_bytes(bytes(uid),"little",False)).upper(),reader.tohexstring(uid)))
+                defaultKey = [255,255,255,255,255,255]
+                reader.MFRC522_DumpClassic1K(uid, Start=0, End=64, keyA=defaultKey)
+                print("Done")
+                previousCard = uid
+            else:
+                pass
+        else:
+            previousCard = [0]
+        utime.sleep_ms(50) 
 
 ## motor setup ###########################################################
 # defined used pins on the board

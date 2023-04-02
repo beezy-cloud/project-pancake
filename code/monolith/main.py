@@ -36,7 +36,7 @@ print(f"{timestamp()} - WRCR: {mac} v0.1 DEV RELEASE")
 
 # network connection ####################################################
 networkName = 'Proximus-Home-3A80'
-networkPassword= ''
+networkPassword= 'weeawf677xh9e'
 
 # connecting to network 
 def connecting():

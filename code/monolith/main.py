@@ -12,117 +12,115 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import utime 
+import ujson
+import network
+import ubinascii
 import machine
 from machine import Pin
-import time 
-import network
 import socket
-import utime
 
-## NFC reader ############################################################
-# import NFC reader library
-from mfrc522 import MFRC522
+# getting a ISO8601 timestamp format
+def timestamp():
+    current_time = utime.localtime()
+    time = '{:04d}-{:02d}-{:02d}T{:02d}:{:02d}:{:02d}Z'.format(
+        current_time[0], current_time[1], current_time[2],
+        current_time[3], current_time[4], current_time[5])
+    return time
+
+# print device and software info
+wlan = network.WLAN(network.STA_IF)
+wlan.active(True)
+mac = ubinascii.hexlify(network.WLAN().config('mac'),':').decode()
+print(f"{timestamp()} - WRCR: {mac} v0.1 DEV RELEASE")
+
+# network connection ####################################################
+networkName = 'Proximus-Home-3A80'
+networkPassword= 'weeawf677xh9e'
 
 # connecting to network 
-reader = MFRC522(spi_id=0,sck=2,miso=4,mosi=3,cs=1,rst=0)
-previousCard = [0]
+def connecting():
+    if not wlan.isconnected():
+        print(f"{timestamp()} - WLAN connecting to network...")
+        wlan.connect(networkName, networkPassword)
+        print(f"{timestamp()} - WLAN waiting for connection...")
+        while not wlan.isconnected():
+            pass 
+    ip = wlan.ifconfig()[0]
+    print(f"{timestamp()} - WLAN connected on {networkName} with IP {ip}")
+    return ip
 
-def cardReader():
-    while True: 
-        reader.init()
-        (stat, tag_type) = reader.request(reader.REQIDL)
-        if uid == previousCard:
-            continue
-        if stat == reader.OK:
-            (stat, uid) = reader.SelectTagSN()
-            if stat == reader.OK:
-                print("Card detected {}  uid={}".format(hex(int.from_bytes(bytes(uid),"little",False)).upper(),reader.tohexstring(uid)))
-                defaultKey = [255,255,255,255,255,255]
-                reader.MFRC522_DumpClassic1K(uid, Start=0, End=64, keyA=defaultKey)
-                print("Done")
-                previousCard = uid
-            else:
-                pass
-        else:
-            previousCard = [0]
-        utime.sleep_ms(50) 
-
-## motor setup ###########################################################
-# defined used pins on the board
+# motor setup
 motorOneFW = Pin(18, Pin.OUT)
 motorOneBW = Pin(19, Pin.OUT)
 motorTwoFW = Pin(20, Pin.OUT)
 motorTwoBW = Pin(21, Pin.OUT)
 
-# define movements 
+# define movements
+def moveStop():
+    motorOneFW.value(0)
+    motorOneBW.value(0)
+    motorTwoFW.value(0)
+    motorTwoBW.value(0)
+
 def moveForward():
     motorOneFW.value(1)
-    motorTwoFW.value(1)
-    motorOneBW.value(0)
+    motorOneBW.value(1)
+    motorTwoFW.value(0)
     motorTwoBW.value(0)
+    utime.sleep(1)
+    moveStop()
 
 def moveBackward():
     motorOneFW.value(0)
-    motorTwoFW.value(0)
-    motorOneBW.value(1)
-    motorTwoBW.value(1)
-
-def moveRight():
-    motorOneFW.value(0)
+    motorOneBW.value(0)
     motorTwoFW.value(1)
-    motorOneBW.value(1)
-    motorTwoBW.value(0)
+    motorTwoBW.value(1)
+    utime.sleep(1)
+    moveStop()
 
 def moveLeft():
     motorOneFW.value(1)
-    motorTwoFW.value(0)
     motorOneBW.value(0)
+    motorTwoFW.value(0)
     motorTwoBW.value(1)
+    utime.sleep(1)
+    moveStop()
 
-def moveStop():
+def moveRight():
     motorOneFW.value(0)
-    motorTwoFW.value(0)
-    motorOneBW.value(0)
+    motorOneBW.value(1)
+    motorTwoFW.value(1)
     motorTwoBW.value(0)
-
-# default state is fullstop 
-moveStop()
-
-## network connection ####################################################
-
-# SSID with credentials for wireless connection 
-networkName = 'NCC-1031-A'
-networkPassword= 'prouteprouteproute!'
-
-# connecting to network 
-def connecting():
-    wlan = network.WLAN(network.STA_IF)
-    wlan.active(True)
-    if not wlan.isconnected():
-        print('connecting to network...')
-        wlan.connect(networkName, networkPassword)
-        while not wlan.isconnected():
-            print('waiting for connection...')
-            pass 
-    ip = wlan.ifconfig()[0]
-    print(f'Connected on {ip}')
-    return ip 
-
+    utime.sleep(1)
+    moveStop()
 
 # create a network socket
+socketPort = 80
 def networkSocket(ip):
-    address = (ip, 80)
-    connection = socket.socket()
-    connection.bind(address)
+    address = (ip, socketPort)
+    connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    try:
+        print(f"{timestamp()} - Try to start a Network Socket...")
+        connection.bind(address)
+    except OSError:
+        old = connection.getsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR)
+        print(f"{timestamp()} - Socket state {old} already in use!")
+        connection.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR, 1)
+        new = connection.getsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR)
+        print(f"{timestamp()} -Socket state {new}")
+        connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        connection.bind(address)
+    print(f"{timestamp()} - Socket started on {ip} on port {socketPort}")
     connection.listen(1)
-    return connection 
+    return connection
 
 def webControl():
     html = f"""
             <!DOCTYPE html>
             <html>
             <head>
-            <title>Zumo Robot Control</title>
+            <title>WRCR</title>
             </head>
             <center><b>
             <form action="./forward">
@@ -148,30 +146,38 @@ def webControl():
     return str(html)
 
 def webServer(connection):
+    print(f"{timestamp()} - webServer started with webControl as Index")
     while True:
+        status = Pin("LED", Pin.OUT)
+        status.toggle()
         client = connection.accept()[0]
         request = client.recv(1024)
         request = str(request)
         try:
             request = request.split()[1]
         except IndexError:
+            print(f"{timestamp()} - webServer failed due to IndexError!")
             pass
         if request == '/forward?':
+            print(f"{timestamp()} - webControl called for moveForward")
             moveForward()
         elif request == '/backward?':
+            print(f"{timestamp()} - webControl called for moveBackward")
             moveBackward()
         elif request == '/right?':
+            print(f"{timestamp()} - webControl called for moveRight")
             moveRight()
         elif request == '/left?':
+            print(f"{timestamp()} - webControl called for moveLeft")
             moveLeft()
         elif request == '/stop?':
+            print(f"{timestamp()} - webControl called for moveStop")
             moveStop()
         html = webControl()
         client.send(html)
         client.close()
 
 try:
-    cardReader()
     ip = connecting()
     connection = networkSocket(ip)
     webServer(connection)

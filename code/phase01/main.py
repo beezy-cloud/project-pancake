@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import utime 
+import utime  
 import ujson
 import network
 import ubinascii
@@ -64,19 +64,19 @@ def moveStop():
     motorTwoBW.value(0)
 
 def moveForward():
-    motorOneFW.value(1)
+    motorOneFW.value(0)
     motorOneBW.value(1)
     motorTwoFW.value(0)
-    motorTwoBW.value(0)
-    utime.sleep(1)
+    motorTwoBW.value(1)
+    utime.sleep_ms(250)
     moveStop()
 
 def moveBackward():
-    motorOneFW.value(0)
+    motorOneFW.value(1)
     motorOneBW.value(0)
     motorTwoFW.value(1)
-    motorTwoBW.value(1)
-    utime.sleep(1)
+    motorTwoBW.value(0)
+    utime.sleep_ms(250)
     moveStop()
 
 def moveLeft():
@@ -84,7 +84,7 @@ def moveLeft():
     motorOneBW.value(0)
     motorTwoFW.value(0)
     motorTwoBW.value(1)
-    utime.sleep(1)
+    utime.sleep_ms(250)
     moveStop()
 
 def moveRight():
@@ -92,7 +92,7 @@ def moveRight():
     motorOneBW.value(1)
     motorTwoFW.value(1)
     motorTwoBW.value(0)
-    utime.sleep(1)
+    utime.sleep_ms(250)
     moveStop()
 
 # create a network socket
@@ -138,7 +138,7 @@ def webControl():
             </form></td>
             </tr></table>
             <form action="./backward">
-            <input type="submit" value="Back" style="height:120px; width:120px" />
+            <input type="submit" value="Backward" style="height:120px; width:120px" />
             </form>
             </body>
             </html>
